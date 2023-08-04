@@ -22,3 +22,6 @@ function render() {
 }
 
 render();
+
+console.log(blueKnight.diceArray);
+console.log(redKnight.diceArray);
