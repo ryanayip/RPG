@@ -1,23 +1,6 @@
-const hero = {
-  elementId: "hero",
-  name: "Hero",
-  avatar: "images/knight-blue.png",
-  health: 60,
-  diceRoll: [3, 1, 4],
-  diceCount: 3,
-};
-
-const enemy = {
-  elementId: "enemy",
-  name: "Enemy",
-  avatar: "images/knight-red.png",
-  health: 10,
-  diceRoll: [2],
-  diceCount: 1,
-};
+import { hero, enemy } from "./chardata.js";
 
 //Character class
-
 function Character(data) {
   this.elementId = data.elementId;
   this.name = data.name;
