@@ -16,12 +16,27 @@ const enemy = {
   diceCount: 1,
 };
 
+//Roll dice function
+
+function getDiceRollArray(diceCount) {
+  const newDiceRolls = [];
+  for (let i = 0; i < diceCount; i++) {
+    newDiceRolls.push(Math.floor(Math.random() * 6) + 1);
+  }
+  return newDiceRolls;
+}
+
+function getDiceHTML(diceCount) {
+  return getDiceRollArray(diceCount).map((num) => {
+    return `<div class="dice">${num}</div>`;
+  });
+}
+
+//Render character function
 function renderCharacter(character) {
   const { elementId, name, avatar, health, diceRoll, diceCount } = character;
 
-  let diceHtml = diceRoll.map((dice) => {
-    return `<div class="dice">${dice}</div>`;
-  });
+  const diceHtml = getDiceHTML(diceCount).join("");
 
   document.getElementById(`${elementId}`).innerHTML = `
         <div class="character-card">
@@ -33,5 +48,6 @@ function renderCharacter(character) {
     `;
 }
 
+//Rendering two characters
 renderCharacter(hero);
 renderCharacter(enemy);
