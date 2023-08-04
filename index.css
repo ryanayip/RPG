@@ -132,7 +132,7 @@ main {
   position: absolute;
   bottom: 0;
   left: 0px;
-  right: 0;
+  right: 0px;
   background: #000721;
   display: flex;
   justify-content: center;
@@ -150,14 +150,14 @@ main {
 
 .dice,
 .placeholder-dice {
-  height: 5.5vh;
-  width: 5.5vh;
+  height: 4vh;
+  width: 4vh;
   background: #fff;
   border-radius: 5px;
   border: 1px solid #666;
   color: #000721;
   text-align: center;
-  line-height: 6vh;
+  line-height: 5vh;
 }
 
 @media (min-width: 550px) {
