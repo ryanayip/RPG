@@ -67,7 +67,7 @@ main {
 
 @media (min-width: 550px) {
   .name {
-    margin: 2vh 0;
+    margin: 4vh 0;
     font-size: 100%;
   }
 }
@@ -99,7 +99,7 @@ main {
 
 @media (min-width: 550px) {
   .health {
-    margin: 2vh 5%;
+    margin: 4vh 5%;
   }
 }
 
