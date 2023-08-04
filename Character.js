@@ -9,7 +9,6 @@ export class Character {
 
   //method to render character to the DOM
   getCharacter() {
-    const diceHtml = this.getDiceHTML(this.diceCount).join("");
     return `
             <div class="character-card">
                 <h4 class="name">${this.name}</h4>
@@ -21,9 +20,13 @@ export class Character {
   }
 
   //Method to append dice to DOM
+  //   getDiceHTML() {
+  //     return getDiceRollArray(this.diceCount).map((num) => {
+  //       return `<div class="dice">${num}</div>`;
+  //     });
+  //   }
+
   getDiceHTML() {
-    return getDiceRollArray(this.diceCount).map((num) => {
-      return `<div class="dice">${num}</div>`;
-    });
+    this.currentDiceScore = getDiceRollArray(this.diceCount);
   }
 }

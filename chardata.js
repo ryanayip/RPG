@@ -7,7 +7,7 @@ export const characterData = {
     health: 60,
     diceRoll: [3, 1, 4],
     diceCount: 3,
-    currentDiceScore: 0,
+    currentDiceScore: [],
   },
 
   enemy: {
@@ -16,6 +16,6 @@ export const characterData = {
     health: 10,
     diceRoll: [2, 2],
     diceCount: 2,
-    currentDiceScore: 0,
+    currentDiceScore: [],
   },
 };
