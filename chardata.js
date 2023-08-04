@@ -2,7 +2,6 @@
 
 export const characterData = {
   hero: {
-    elementId: "hero",
     name: "Hero",
     avatar: "images/knight-blue.png",
     health: 60,
@@ -11,7 +10,6 @@ export const characterData = {
   },
 
   enemy: {
-    elementId: "enemy",
     name: "Enemy",
     avatar: "images/knight-red.png",
     health: 10,
