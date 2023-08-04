@@ -1,15 +1,13 @@
 import { hero, enemy } from "./chardata.js";
 
 //Character class
-function Character(data) {
-  this.elementId = data.elementId;
-  this.name = data.name;
-  this.avatar = data.avatar;
-  this.health = data.health;
-  this.diceRoll = data.diceRoll;
-  this.diceCount = data.diceCount;
+class Character {
+  constructor(data) {
+    Object.assign(this, data);
+  }
+
   //method to render character to the DOM
-  this.getCharacter = () => {
+  getCharacter = () => {
     const diceHtml = getDiceHTML(this.diceCount).join("");
     document.getElementById(`${this.elementId}`).innerHTML = `
           <div class="character-card">
