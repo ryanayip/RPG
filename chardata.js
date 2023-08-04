@@ -1,4 +1,4 @@
-//data with character information
+//Data with character information
 
 export const characterData = {
   hero: {
