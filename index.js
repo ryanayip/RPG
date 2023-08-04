@@ -1,4 +1,4 @@
-import { hero, enemy } from "./chardata.js";
+import { characterData } from "./chardata.js";
 
 //Character class
 class Character {
@@ -9,7 +9,7 @@ class Character {
   //method to render character to the DOM
   getCharacter() {
     const diceHtml = this.getDiceHTML(this.diceCount).join("");
-    document.getElementById(`${this.elementId}`).innerHTML = `
+    return `
           <div class="character-card">
               <h4 class="name">${this.name}</h4>
               <img class="avatar" src=${this.avatar} />
@@ -34,12 +34,16 @@ function getDiceRollArray(diceCount) {
   });
 }
 
-//Creating the two characters from the Character class
+//Creating two instances of the Character class for blue and red knight
 
-const blueKnight = new Character(hero);
-const redKnight = new Character(enemy);
+const blueKnight = new Character(characterData.hero);
+const redKnight = new Character(characterData.enemy);
 
-//Rendering two characters
+//Rendering two characters by setting the innerHTML of the DOM elements to the
+//return of the getCharacter() method
+function render() {
+  document.getElementById("hero").innerHTML = blueKnight.getCharacter();
+  document.getElementById("enemy").innerHTML = redKnight.getCharacter();
+}
 
-blueKnight.getCharacter();
-redKnight.getCharacter();
+render();
