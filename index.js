@@ -4,8 +4,8 @@ import { Character } from "./Character.js";
 //Attack button
 document.getElementById("attack-button").addEventListener("click", () => {
   //Get the dice roll for each character
-  // blueKnight.getDiceHTML();
-  // redKnight.getDiceHTML();
+  blueKnight.getDiceHTML();
+  redKnight.getDiceHTML();
   render();
 });
 
@@ -22,6 +22,3 @@ function render() {
 }
 
 render();
-
-console.log(blueKnight.diceArray);
-console.log(redKnight.diceArray);

@@ -28,5 +28,10 @@ export class Character {
 
   getDiceHTML() {
     this.currentDiceScore = getDiceRollArray(this.diceCount);
+    this.diceArray = this.currentDiceScore
+      .map((num) => {
+        return `<div class="dice">${num}</div>`;
+      })
+      .join("");
   }
 }
