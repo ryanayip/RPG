@@ -6,6 +6,8 @@ export function getDiceRollArray(diceCount) {
   });
 }
 
+//Dice placeholder based on dice count from character data
+
 export function getDicePlaceholderHTML(diceCount) {
   return new Array(diceCount).fill(0).map(() => {
     return `<div class="placeholder-dice"></div>`;
