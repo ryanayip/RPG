@@ -33,7 +33,7 @@ main {
 }
 
 .character-card {
-  height: 14rem;
+  height: 14.5rem;
   margin-top: 0.5rem;
   width: 94vw;
   max-width: 230px;
@@ -62,18 +62,18 @@ main {
   margin: 1vh 0;
   width: 100%;
   letter-spacing: 0.08em;
-  font-size: 90%;
+  font-size: 55%;
 }
 
 @media (min-width: 550px) {
   .name {
     margin: 2vh 0;
-    font-size: 100%;
+    font-size: 80%;
   }
 }
 
 .avatar {
-  width: 8vh;
+  width: 12vh;
   border: 2px solid #000721;
   max-width: 100%;
   opacity: 0.8;
@@ -83,7 +83,7 @@ main {
 
 @media (min-width: 550px) {
   .avatar {
-    width: 12vh;
+    width: 16vh;
   }
 }
 
@@ -95,11 +95,13 @@ main {
   margin: 1vh 4%;
   color: #ccc;
   letter-spacing: 0.03em;
+  margin-bottom: 0px;
 }
 
 @media (min-width: 550px) {
   .health {
     margin: 2vh 4%;
+    margin-bottom: 0px;
   }
 }
 

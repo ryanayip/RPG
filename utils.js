@@ -13,3 +13,6 @@ export function getDicePlaceholderHTML(diceCount) {
     return `<div class="placeholder-dice"></div>`;
   });
 }
+
+export const getPercentage = (remainingHealth, maxHealth) =>
+  (remainingHealth / maxHealth) * 100;
