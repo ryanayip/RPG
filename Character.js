@@ -19,13 +19,7 @@ export class Character {
         `;
   }
 
-  //Method to append dice to DOM
-  //   getDiceHTML() {
-  //     return getDiceRollArray(this.diceCount).map((num) => {
-  //       return `<div class="dice">${num}</div>`;
-  //     });
-  //   }
-
+  //method to get the dice roll for each character
   getDiceHTML() {
     this.currentDiceScore = getDiceRollArray(this.diceCount);
     this.diceArray = this.currentDiceScore
@@ -33,5 +27,10 @@ export class Character {
         return `<div class="dice">${num}</div>`;
       })
       .join("");
+  }
+
+  //Take damage method
+  takeDamage(attackScoreArray) {
+    console.log(`${this.name} takes ${attackScoreArray} damage`);
   }
 }

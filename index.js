@@ -1,11 +1,14 @@
 import { characterData } from "./chardata.js";
 import { Character } from "./Character.js";
+import { getDiceRollArray } from "./utils.js";
 
 //Attack button
 document.getElementById("attack-button").addEventListener("click", () => {
   //Get the dice roll for each character
   blueKnight.getDiceHTML();
   redKnight.getDiceHTML();
+  blueKnight.takeDamage(redKnight.currentDiceScore.reduce((a, b) => a + b));
+  redKnight.takeDamage(blueKnight.currentDiceScore.reduce((a, b) => a + b));
   render();
 });
 
