@@ -9,17 +9,28 @@ document.getElementById("attack-button").addEventListener("click", () => {
   //Take damage based on total of dice roll
   heroChar.takeDamage(currentEnemy.currentDiceScore);
   currentEnemy.takeDamage(heroChar.currentDiceScore);
-  //Check if either character is dead. If so, end the game
   render();
+  //Check if either character is dead. If so, end the game
   heroChar.dead && currentEnemy.dead
     ? endGame()
     : heroChar.dead
-    ? setTimeout(endGame, 1000)
+    ? setTimeout(endGame, 1200)
     : skeleknightChar.dead
-    ? setTimeout(endGame, 1000)
+    ? setTimeout(endGame, 1200)
     : null;
+
+  if (currentEnemy.dead) {
+    // Disable the button
+    document.getElementById("attack-button").disabled = true;
+
+    // Re-enable the button after 1.2 seconds
+    setTimeout(() => {
+      document.getElementById("attack-button").disabled = false;
+    }, 1200);
+  }
+
   currentEnemy = getCurrentEnemy();
-  render();
+  setTimeout(render, 1200);
 });
 
 //End game function
