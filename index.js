@@ -10,8 +10,14 @@ document.getElementById("attack-button").addEventListener("click", () => {
   heroChar.takeDamage(currentEnemy.currentDiceScore);
   currentEnemy.takeDamage(heroChar.currentDiceScore);
   //Check if either character is dead. If so, end the game
-  heroChar.dead && currentEnemy.dead ? endGame() : null;
-  skeleknightChar.dead ? endGame() : null;
+  render();
+  heroChar.dead && currentEnemy.dead
+    ? endGame()
+    : heroChar.dead
+    ? setTimeout(endGame, 1000)
+    : skeleknightChar.dead
+    ? setTimeout(endGame, 1000)
+    : null;
   currentEnemy = getCurrentEnemy();
   render();
 });
