@@ -7,8 +7,8 @@ document.getElementById("attack-button").addEventListener("click", () => {
   //Get the dice roll for each character
   blueKnight.getDiceHTML();
   redKnight.getDiceHTML();
-  blueKnight.takeDamage(redKnight.currentDiceScore.reduce((a, b) => a + b));
-  redKnight.takeDamage(blueKnight.currentDiceScore.reduce((a, b) => a + b));
+  blueKnight.takeDamage(redKnight.currentDiceScore);
+  redKnight.takeDamage(blueKnight.currentDiceScore);
   render();
 });
 

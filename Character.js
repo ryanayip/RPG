@@ -31,6 +31,10 @@ export class Character {
 
   //Take damage method
   takeDamage(attackScoreArray) {
-    console.log(`${this.name} takes ${attackScoreArray} damage`);
+    const totalAttackScore = attackScoreArray.reduce((a, b) => a + b);
+    this.health -= totalAttackScore;
+    console.log(
+      `${this.name} took ${totalAttackScore} damage and has ${this.health} remaining!`
+    );
   }
 }
