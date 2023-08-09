@@ -4,16 +4,32 @@ export const characterData = {
   hero: {
     name: "Hero",
     avatar: "images/hero.png",
-    health: 40,
+    health: 60,
     diceCount: 3,
     currentDiceScore: [],
   },
 
-  enemy: {
-    name: "Enemy",
+  skull: {
+    name: "Skull",
     avatar: "images/skull.png",
     health: 20,
     diceCount: 1,
+    currentDiceScore: [],
+  },
+
+  witch: {
+    name: "Witch",
+    avatar: "images/witch.png",
+    health: 25,
+    diceCount: 2,
+    currentDiceScore: [],
+  },
+
+  skeleknight: {
+    name: "Skeleton Knight",
+    avatar: "images/skeleknight.png",
+    health: 30,
+    diceCount: 3,
     currentDiceScore: [],
   },
 };

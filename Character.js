@@ -11,6 +11,7 @@ export class Character {
     this.diceArray = getDicePlaceholderHTML(this.diceCount).join("");
     //Health bar
     this.maxHealth = this.health;
+    this.dead = false;
   }
 
   //method to render character to the DOM
