@@ -12,7 +12,7 @@ export const characterData = {
   enemy: {
     name: "Enemy",
     avatar: "images/knight-red.png",
-    health: 10,
+    health: 30,
     diceCount: 2,
     currentDiceScore: [],
   },
