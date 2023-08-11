@@ -10,6 +10,7 @@ document.getElementById("attack-button").addEventListener("click", () => {
   heroChar.takeDamage(currentEnemy.currentDiceScore);
   currentEnemy.takeDamage(heroChar.currentDiceScore);
   render();
+  setTimeout(render, 200);
   //Check if either character is dead. If so, end the game
   heroChar.dead && currentEnemy.dead
     ? endGame()
@@ -30,7 +31,7 @@ document.getElementById("attack-button").addEventListener("click", () => {
   }
 
   currentEnemy = getCurrentEnemy();
-  setTimeout(render, 1200);
+  setTimeout(render, 1000);
 });
 
 //End game function

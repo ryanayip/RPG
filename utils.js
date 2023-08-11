@@ -14,5 +14,7 @@ export function getDicePlaceholderHTML(diceCount) {
   });
 }
 
+//Health bar percentage
+
 export const getPercentage = (remainingHealth, maxHealth) =>
   (remainingHealth / maxHealth) * 100;

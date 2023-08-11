@@ -46,6 +46,16 @@ export class Character {
       this.health = 0;
       this.dead = true;
     }
+    //Changing image while taking damage
+    if (this.health > 0) {
+      // Switch to damaged avatar version
+      this.avatar = `${this.avatar.replace(".png", "")}-dmg.png`;
+      // After 0.5 seconds, revert back to the original avatar
+      setTimeout(() => {
+        this.avatar = `${this.avatar.replace("-dmg.png", ".png")}`;
+      }, 200);
+    }
+
     //temp logging the percentage of health remaining
     console.log(
       `${this.name} has ${getPercentage(
