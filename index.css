@@ -12,7 +12,7 @@ body {
   flex-direction: column;
   align-items: center;
   color: #fff;
-  font-family: "MedievalSharp", cursive;
+  font-family: "Vollkorn SC", serif;
 }
 
 main {
@@ -33,7 +33,7 @@ main {
 }
 
 .character-card {
-  height: 14.5rem;
+  height: 15.5rem;
   margin-top: 0.5rem;
   width: 94vw;
   max-width: 230px;
@@ -53,7 +53,7 @@ main {
 @media (min-width: 550px) {
   .character-card {
     border: 0.2rem solid #000721;
-    height: 26rem;
+    height: 28rem;
     width: 37vw;
   }
 }
@@ -182,7 +182,7 @@ main {
 
 button {
   margin-top: 0.5rem;
-  font-family: "MedievalSharp", cursive;
+  font-family: "Vollkorn SC", serif;
   background-color: #fcc02a;
   border: 2px solid #963404;
   outline: none;

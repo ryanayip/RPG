@@ -2,7 +2,7 @@
 
 export const characterData = {
   hero: {
-    name: "Hero",
+    name: "HERO",
     avatar: "images/hero.png",
     health: 80,
     diceCount: 3,
@@ -10,7 +10,7 @@ export const characterData = {
   },
 
   skull: {
-    name: "Skull",
+    name: "SKULL",
     avatar: "images/skull.png",
     health: 20,
     diceCount: 1,
@@ -18,7 +18,7 @@ export const characterData = {
   },
 
   witch: {
-    name: "Witch",
+    name: "WITCH",
     avatar: "images/witch.png",
     health: 30,
     diceCount: 2,
@@ -26,7 +26,7 @@ export const characterData = {
   },
 
   skeleknight: {
-    name: "Skeleton Knight",
+    name: "SKELETON KNIGHT",
     avatar: "images/skeleknight.png",
     health: 40,
     diceCount: 3,

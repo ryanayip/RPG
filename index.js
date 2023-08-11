@@ -14,19 +14,19 @@ document.getElementById("attack-button").addEventListener("click", () => {
   heroChar.dead && currentEnemy.dead
     ? endGame()
     : heroChar.dead
-    ? setTimeout(endGame, 1200)
+    ? setTimeout(endGame, 1000)
     : skeleknightChar.dead
-    ? setTimeout(endGame, 1200)
+    ? setTimeout(endGame, 1000)
     : null;
 
   if (currentEnemy.dead) {
     // Disable the button
     document.getElementById("attack-button").disabled = true;
 
-    // Re-enable the button after 1.2 seconds
+    // Re-enable the button after 1 seconds
     setTimeout(() => {
       document.getElementById("attack-button").disabled = false;
-    }, 1200);
+    }, 1000);
   }
 
   currentEnemy = getCurrentEnemy();
@@ -37,15 +37,15 @@ document.getElementById("attack-button").addEventListener("click", () => {
 function endGame() {
   const endMessage =
     heroChar.dead && currentEnemy.dead
-      ? "All lives have been lost. Tragic"
+      ? "ALL LIVES HAVE BEEN LOST. TRAGIC."
       : heroChar.dead
-      ? "The Hero has been slain."
-      : "You are victorious!";
+      ? "THE HERO HAS BEEN SLAIN."
+      : "YOU ARE VICTORIOUS!";
   console.log(endMessage);
 
   //end message
   document.body.innerHTML = `<div class="end-game">
-    <h2>Game Over</h2>
+    <h2>GAME OVER</h2>
     <h3>${endMessage}</h3>
   </div>`;
 }
