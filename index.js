@@ -10,7 +10,7 @@ document.getElementById("attack-button").addEventListener("click", () => {
   heroChar.takeDamage(currentEnemy.currentDiceScore);
   currentEnemy.takeDamage(heroChar.currentDiceScore);
   render();
-  setTimeout(render, 200);
+  setTimeout(render, 500);
   //Check if either character is dead. If so, end the game
   heroChar.dead && currentEnemy.dead
     ? endGame()
@@ -31,7 +31,7 @@ document.getElementById("attack-button").addEventListener("click", () => {
   }
 
   currentEnemy = getCurrentEnemy();
-  setTimeout(render, 1000);
+  setTimeout(render, 2000);
 });
 
 //End game function
@@ -58,12 +58,7 @@ const skullChar = new Character(characterData.skull);
 const witchChar = new Character(characterData.witch);
 const skeleknightChar = new Character(characterData.skeleknight);
 
-//Setting the current enemy to the skull character
-//let currentEnemy = skullChar;
-//Setting the current enemy to the skull character, unless they're dead. Currently broken.
-
-let currentEnemy = getCurrentEnemy();
-
+//Function to get the current enemy
 function getCurrentEnemy() {
   return !skullChar.dead
     ? skullChar
@@ -73,6 +68,9 @@ function getCurrentEnemy() {
     ? skeleknightChar
     : null;
 }
+
+//Initialising the current enemy
+let currentEnemy = getCurrentEnemy();
 
 //Rendering two characters by setting the innerHTML of the DOM elements to the
 //return of the getCharacter() method

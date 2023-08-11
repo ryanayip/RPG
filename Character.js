@@ -45,6 +45,8 @@ export class Character {
     if (this.health <= 0) {
       this.health = 0;
       this.dead = true;
+      // Switch to dead avatar version
+      this.avatar = this.deadAvatar;
     }
     //Changing image while taking damage
     if (this.health > 0) {
