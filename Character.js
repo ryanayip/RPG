@@ -58,9 +58,8 @@ export class Character {
 
     //temp logging the percentage of health remaining
     console.log(
-      `${this.name} has ${getPercentage(
-        this.health,
-        this.maxHealth
+      `${this.name} has ${getPercentage(this.health, this.maxHealth).toFixed(
+        0
       )}% health remaining`
     );
   }
