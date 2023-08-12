@@ -214,17 +214,18 @@ button:focus {
   text-align: center;
 }
 
-.end-emoji {
-  font-size: 80px;
-}
-
-#textarea {
+#text-area {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: 7.5rem;
   margin-top: 0.5rem;
   width: 94vw;
   max-width: 540px;
   padding: 1vh 1vw;
-  font-size: 1.6rem;
+  font-size: 1rem;
   color: white;
   border-radius: 14px;
   background: #231d24;

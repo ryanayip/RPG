@@ -1,5 +1,6 @@
 import { characterData } from "./chardata.js";
 import { Character } from "./Character.js";
+import { getDicePlaceholderHTML } from "./utils.js";
 
 //Attack button
 document.getElementById("attack-button").addEventListener("click", () => {
@@ -9,29 +10,63 @@ document.getElementById("attack-button").addEventListener("click", () => {
   //Take damage based on total of dice roll
   heroChar.takeDamage(currentEnemy.currentDiceScore);
   currentEnemy.takeDamage(heroChar.currentDiceScore);
+  //temp text area
+  const textArea = document.getElementById("text-area");
+  textArea.innerHTML = `
+        <h4>${heroChar.name} has dealt ${heroChar.currentDiceScore.reduce(
+    (a, b) => a + b
+  )} damage!</h4>
+        <h4>${
+          currentEnemy.name
+        } has dealt ${currentEnemy.currentDiceScore.reduce(
+    (a, b) => a + b
+  )} damage!</h4>
+        `;
+
+  document.getElementById("attack-button").disabled = true;
+  setTimeout(() => {
+    document.getElementById("attack-button").disabled = false;
+  }, 1500);
+
   render();
   setTimeout(render, 500);
+  // //Check if either character is dead. If so, end the game
+  // heroChar.dead && currentEnemy.dead
+  //   ? endGame()
+  //   : heroChar.dead
+  //   ? setTimeout(endGame, 1000)
+  //   : skeleknightChar.dead
+  //   ? setTimeout(endGame, 4000)
+  //   : null;
+
+  //When the enemy dies
+  if (currentEnemy.dead) {
+    // Disable the button
+    setTimeout(heroChar.clearDice(), 500);
+    document.getElementById("attack-button").disabled = true;
+    setTimeout(() => {
+      textArea.innerHTML = "";
+    }, 1000);
+    setTimeout(() => {
+      textArea.innerHTML = `
+    <h3>THE ENEMY HAS BEEN SLAIN. DEFEAT THE ${currentEnemy.name}</h3>`;
+    }, 1500);
+
+    // Re-enable the button after 3 seconds
+    setTimeout(() => {
+      document.getElementById("attack-button").disabled = false;
+    }, 3000);
+  }
   //Check if either character is dead. If so, end the game
   heroChar.dead && currentEnemy.dead
     ? endGame()
     : heroChar.dead
     ? setTimeout(endGame, 1000)
     : skeleknightChar.dead
-    ? setTimeout(endGame, 1000)
+    ? setTimeout(endGame, 1100)
     : null;
-
-  if (currentEnemy.dead) {
-    // Disable the button
-    document.getElementById("attack-button").disabled = true;
-
-    // Re-enable the button after 1 seconds
-    setTimeout(() => {
-      document.getElementById("attack-button").disabled = false;
-    }, 1000);
-  }
-
   currentEnemy = getCurrentEnemy();
-  setTimeout(render, 2000);
+  setTimeout(render, 3100);
 });
 
 //End game function
@@ -42,10 +77,11 @@ function endGame() {
       : heroChar.dead
       ? "THE HERO HAS BEEN SLAIN."
       : "YOU ARE VICTORIOUS!";
-  console.log(endMessage);
 
   //end message
-  document.body.innerHTML = `<div class="end-game">
+  textArea.innerHTML = "";
+
+  textArea.innerHTML = `<div>
     <h2>GAME OVER</h2>
     <h3>${endMessage}</h3>
   </div>`;
@@ -57,6 +93,8 @@ const heroChar = new Character(characterData.hero);
 const skullChar = new Character(characterData.skull);
 const witchChar = new Character(characterData.witch);
 const skeleknightChar = new Character(characterData.skeleknight);
+//Defining the text area
+const textArea = document.getElementById("text-area");
 
 //Function to get the current enemy
 function getCurrentEnemy() {

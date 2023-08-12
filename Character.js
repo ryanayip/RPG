@@ -4,6 +4,8 @@ import {
   getPercentage,
 } from "./utils.js";
 
+//const textArea = document.getElementById("text-area");
+
 //Character class
 export class Character {
   constructor(data) {
@@ -59,11 +61,15 @@ export class Character {
     }
 
     //temp logging the percentage of health remaining
-    console.log(
-      `${this.name} has ${getPercentage(this.health, this.maxHealth).toFixed(
-        0
-      )}% health remaining`
-    );
+
+    // textArea.innerText += `${this.name} has ${getPercentage(
+    //   this.health,
+    //   this.maxHealth
+    // ).toFixed(0)}% health remaining`;
+  }
+
+  clearDice() {
+    this.diceArray = getDicePlaceholderHTML(this.diceCount).join("");
   }
 
   getHealthBar() {
