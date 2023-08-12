@@ -1,6 +1,5 @@
 import { characterData } from "./chardata.js";
 import { Character } from "./Character.js";
-import { getDicePlaceholderHTML } from "./utils.js";
 
 //Attack button
 document.getElementById("attack-button").addEventListener("click", () => {
@@ -12,16 +11,29 @@ document.getElementById("attack-button").addEventListener("click", () => {
   currentEnemy.takeDamage(heroChar.currentDiceScore);
   //temp text area
   const textArea = document.getElementById("text-area");
+  // textArea.innerHTML = `
+  //       <h4>${heroChar.name} has dealt ${heroChar.currentDiceScore.reduce(
+  //   (a, b) => a + b
+  // )} damage!</h4>
+  //       <h4>${
+  //         currentEnemy.name
+  //       } has dealt ${currentEnemy.currentDiceScore.reduce(
+  //   (a, b) => a + b
+  // )} damage!</h4>
+  //       `;
   textArea.innerHTML = `
         <h4>${heroChar.name} has dealt ${heroChar.currentDiceScore.reduce(
     (a, b) => a + b
-  )} damage!</h4>
-        <h4>${
-          currentEnemy.name
-        } has dealt ${currentEnemy.currentDiceScore.reduce(
-    (a, b) => a + b
-  )} damage!</h4>
+  )} damage!</h4>`;
+
+  setTimeout(() => {
+    textArea.innerHTML += `<h4>${
+      currentEnemy.name
+    } has dealt ${currentEnemy.currentDiceScore.reduce(
+      (a, b) => a + b
+    )} damage!</h4>
         `;
+  }, 500);
 
   document.getElementById("attack-button").disabled = true;
   setTimeout(() => {
@@ -30,19 +42,12 @@ document.getElementById("attack-button").addEventListener("click", () => {
 
   render();
   setTimeout(render, 500);
-  // //Check if either character is dead. If so, end the game
-  // heroChar.dead && currentEnemy.dead
-  //   ? endGame()
-  //   : heroChar.dead
-  //   ? setTimeout(endGame, 1000)
-  //   : skeleknightChar.dead
-  //   ? setTimeout(endGame, 4000)
-  //   : null;
 
   //When the enemy dies
   if (currentEnemy.dead) {
     // Disable the button
     setTimeout(heroChar.clearDice(), 500);
+    setTimeout(skeleknightChar.clearDice(), 500);
     document.getElementById("attack-button").disabled = true;
     setTimeout(() => {
       textArea.innerHTML = "";
