@@ -4,8 +4,6 @@ import {
   getPercentage,
 } from "./utils.js";
 
-//const textArea = document.getElementById("text-area");
-
 //Character class
 export class Character {
   constructor(data) {
@@ -59,13 +57,6 @@ export class Character {
         this.avatar = `${this.avatar.replace("-dmg.png", ".png")}`;
       }, 200);
     }
-
-    //temp logging the percentage of health remaining
-
-    // textArea.innerText += `${this.name} has ${getPercentage(
-    //   this.health,
-    //   this.maxHealth
-    // ).toFixed(0)}% health remaining`;
   }
 
   clearDice() {
