@@ -5,7 +5,7 @@ export const characterData = {
     name: "HERO",
     avatar: "images/hero.png",
     deadAvatar: "images/hero-dead.png",
-    health: 80,
+    health: 70,
     diceCount: 3,
     currentDiceScore: [],
   },

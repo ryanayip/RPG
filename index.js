@@ -3,15 +3,18 @@ import { Character } from "./Character.js";
 
 //Attack button
 const attackButton = document.getElementById("attack-button");
-attackButton.addEventListener("click", () => {
-  //Get the dice roll for each character
-  heroChar.getDiceHTML();
-  currentEnemy.getDiceHTML();
+attackButton.addEventListener("click", async () => {
+  attackButton.disabled = true;
+  attackButton.style.opacity = 0.5;
+  const textArea = document.getElementById("text-area");
+  textArea.innerHTML = "Rolling Dice...";
+  await heroChar.getDiceHTML(render);
+  await currentEnemy.getDiceHTML(render);
   //Take damage based on total of dice roll
   heroChar.takeDamage(currentEnemy.currentDiceScore);
   currentEnemy.takeDamage(heroChar.currentDiceScore);
   //Text area updating for damage dealt
-  const textArea = document.getElementById("text-area");
+
   textArea.innerHTML = `
         <h4>${heroChar.name} has dealt ${heroChar.currentDiceScore.reduce(
     (a, b) => a + b
@@ -26,21 +29,14 @@ attackButton.addEventListener("click", () => {
         `;
   }, 500);
 
-  attackButton.disabled = true;
-  setTimeout(() => {
-    attackButton.disabled = false;
-  }, 1500);
-
   //Render the image change
   render();
   setTimeout(render, 500);
 
   //When the enemy dies
   if (currentEnemy.dead) {
-    // Disable the button
     setTimeout(heroChar.clearDice(), 500);
     setTimeout(skeleknightChar.clearDice(), 500);
-    attackButton.disabled = true;
     setTimeout(() => {
       textArea.innerHTML = "";
     }, 1000);
@@ -48,11 +44,6 @@ attackButton.addEventListener("click", () => {
       textArea.innerHTML = `
     <h3>THE ENEMY HAS BEEN SLAIN. DEFEAT THE ${currentEnemy.name}</h3>`;
     }, 1200);
-
-    // Re-enable the button after 3 seconds
-    setTimeout(() => {
-      attackButton.disabled = false;
-    }, 3000);
   }
   //Check if either character is dead. If so, end the game
   heroChar.dead && currentEnemy.dead
@@ -63,7 +54,12 @@ attackButton.addEventListener("click", () => {
     ? setTimeout(endGame, 1100)
     : null;
   currentEnemy = getCurrentEnemy();
-  setTimeout(render, 3100);
+
+  //re-enable the button so people can't spam
+  setTimeout(() => {
+    attackButton.disabled = false;
+    attackButton.style.opacity = 1;
+  }, 1400);
 });
 
 //End game function

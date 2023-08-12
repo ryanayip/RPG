@@ -29,13 +29,19 @@ export class Character {
   }
 
   //method to get the dice roll for each character
-  getDiceHTML() {
-    this.currentDiceScore = getDiceRollArray(this.diceCount);
-    this.diceArray = this.currentDiceScore
-      .map((num) => {
-        return `<div class="dice">${num}</div>`;
-      })
-      .join("");
+  async getDiceHTML(render) {
+    this.currentDiceScore = [];
+    for (let i = 0; i < this.diceCount; i++) {
+      const diceValue = getDiceRollArray(1)[0];
+      this.currentDiceScore.push(diceValue);
+      this.diceArray = this.currentDiceScore
+        .map((num) => {
+          return `<div class="dice">${num}</div>`;
+        })
+        .join("");
+      render(); // Refresh the display after each dice
+      await new Promise((resolve) => setTimeout(resolve, 200)); // 0.2 second delay between dice rolls
+    }
   }
 
   //Take damage method
