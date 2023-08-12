@@ -2,25 +2,16 @@ import { characterData } from "./chardata.js";
 import { Character } from "./Character.js";
 
 //Attack button
-document.getElementById("attack-button").addEventListener("click", () => {
+const attackButton = document.getElementById("attack-button");
+attackButton.addEventListener("click", () => {
   //Get the dice roll for each character
   heroChar.getDiceHTML();
   currentEnemy.getDiceHTML();
   //Take damage based on total of dice roll
   heroChar.takeDamage(currentEnemy.currentDiceScore);
   currentEnemy.takeDamage(heroChar.currentDiceScore);
-  //temp text area
+  //Text area updating for damage dealt
   const textArea = document.getElementById("text-area");
-  // textArea.innerHTML = `
-  //       <h4>${heroChar.name} has dealt ${heroChar.currentDiceScore.reduce(
-  //   (a, b) => a + b
-  // )} damage!</h4>
-  //       <h4>${
-  //         currentEnemy.name
-  //       } has dealt ${currentEnemy.currentDiceScore.reduce(
-  //   (a, b) => a + b
-  // )} damage!</h4>
-  //       `;
   textArea.innerHTML = `
         <h4>${heroChar.name} has dealt ${heroChar.currentDiceScore.reduce(
     (a, b) => a + b
@@ -35,11 +26,12 @@ document.getElementById("attack-button").addEventListener("click", () => {
         `;
   }, 500);
 
-  document.getElementById("attack-button").disabled = true;
+  attackButton.disabled = true;
   setTimeout(() => {
-    document.getElementById("attack-button").disabled = false;
+    attackButton.disabled = false;
   }, 1500);
 
+  //Render the image change
   render();
   setTimeout(render, 500);
 
@@ -48,7 +40,7 @@ document.getElementById("attack-button").addEventListener("click", () => {
     // Disable the button
     setTimeout(heroChar.clearDice(), 500);
     setTimeout(skeleknightChar.clearDice(), 500);
-    document.getElementById("attack-button").disabled = true;
+    attackButton.disabled = true;
     setTimeout(() => {
       textArea.innerHTML = "";
     }, 1000);
@@ -59,7 +51,7 @@ document.getElementById("attack-button").addEventListener("click", () => {
 
     // Re-enable the button after 3 seconds
     setTimeout(() => {
-      document.getElementById("attack-button").disabled = false;
+      attackButton.disabled = false;
     }, 3000);
   }
   //Check if either character is dead. If so, end the game
@@ -90,6 +82,12 @@ function endGame() {
     <h2>GAME OVER</h2>
     <h3>${endMessage}</h3>
   </div>`;
+  attackButton.innerText = "RESTART";
+  attackButton.style.backgroundColor = "#000721";
+  attackButton.style.color = "white";
+  attackButton.addEventListener("click", () => {
+    window.location.reload();
+  });
 }
 
 //Creating four instances of the Character class for all four characters
