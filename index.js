@@ -55,7 +55,7 @@ document.getElementById("attack-button").addEventListener("click", () => {
     setTimeout(() => {
       textArea.innerHTML = `
     <h3>THE ENEMY HAS BEEN SLAIN. DEFEAT THE ${currentEnemy.name}</h3>`;
-    }, 1500);
+    }, 1200);
 
     // Re-enable the button after 3 seconds
     setTimeout(() => {
